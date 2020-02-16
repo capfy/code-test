@@ -1,0 +1,17 @@
+C:\project\git\code-test\BankApp\bin\Debug\BankApp.exe.config
+C:\project\git\code-test\BankApp\bin\Debug\BankApp.exe
+C:\project\git\code-test\BankApp\bin\Debug\BankApp.pdb
+C:\project\git\code-test\BankApp\obj\Debug\BankApp.FormMain.resources
+C:\project\git\code-test\BankApp\obj\Debug\BankApp.Properties.Resources.resources
+C:\project\git\code-test\BankApp\obj\Debug\BankApp.csproj.GenerateResource.cache
+C:\project\git\code-test\BankApp\obj\Debug\BankApp.exe
+C:\project\git\code-test\BankApp\obj\Debug\BankApp.pdb
+C:\project\git\code-test\BankApp\obj\Debug\BankApp.Process.resources
+C:\project\git\code-test\BankApp\obj\Debug\BankApp.Register.resources
+C:\project\git\code-test\BankApp\bin\Debug\MySql.Data.dll
+C:\project\git\code-test\BankApp\bin\Debug\Google.Protobuf.dll
+C:\project\git\code-test\BankApp\bin\Debug\BouncyCastle.Crypto.dll
+C:\project\git\code-test\BankApp\bin\Debug\Ubiety.Dns.Core.dll
+C:\project\git\code-test\BankApp\bin\Debug\Renci.SshNet.dll
+C:\project\git\code-test\BankApp\bin\Debug\MySql.Data.xml
+C:\project\git\code-test\BankApp\obj\Debug\BankApp.csproj.CopyComplete
