@@ -15,3 +15,16 @@ C:\project\git\code-test\BankApp\bin\Debug\Ubiety.Dns.Core.dll
 C:\project\git\code-test\BankApp\bin\Debug\Renci.SshNet.dll
 C:\project\git\code-test\BankApp\bin\Debug\MySql.Data.xml
 C:\project\git\code-test\BankApp\obj\Debug\BankApp.csproj.CopyComplete
+D:\CAP\CodeTest\code-test\BankApp\bin\Debug\BankApp.exe.config
+D:\CAP\CodeTest\code-test\BankApp\bin\Debug\BankApp.exe
+D:\CAP\CodeTest\code-test\BankApp\bin\Debug\BankApp.pdb
+D:\CAP\CodeTest\code-test\BankApp\obj\Debug\BankApp.FormMain.resources
+D:\CAP\CodeTest\code-test\BankApp\obj\Debug\BankApp.Process.resources
+D:\CAP\CodeTest\code-test\BankApp\obj\Debug\BankApp.Properties.Resources.resources
+D:\CAP\CodeTest\code-test\BankApp\obj\Debug\BankApp.Register.resources
+D:\CAP\CodeTest\code-test\BankApp\obj\Debug\BankApp.csproj.GenerateResource.cache
+D:\CAP\CodeTest\code-test\BankApp\obj\Debug\BankApp.csproj.CopyComplete
+D:\CAP\CodeTest\code-test\BankApp\obj\Debug\BankApp.exe
+D:\CAP\CodeTest\code-test\BankApp\obj\Debug\BankApp.pdb
+D:\CAP\CodeTest\code-test\BankApp\bin\Debug\Jint.dll
+D:\CAP\CodeTest\code-test\BankApp\obj\Debug\BankApp.csprojAssemblyReference.cache

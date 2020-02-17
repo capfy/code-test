@@ -50,8 +50,9 @@
 			// labelDeposit
 			// 
 			this.labelDeposit.AutoSize = true;
-			this.labelDeposit.Location = new System.Drawing.Point(232, 22);
+			this.labelDeposit.Location = new System.Drawing.Point(185, 22);
 			this.labelDeposit.Name = "labelDeposit";
+			this.labelDeposit.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.labelDeposit.Size = new System.Drawing.Size(80, 13);
 			this.labelDeposit.TabIndex = 1;
 			this.labelDeposit.Text = "Display Deposit";
@@ -96,6 +97,7 @@
 			this.btDeposit.TabIndex = 6;
 			this.btDeposit.Text = "Deposit";
 			this.btDeposit.UseVisualStyleBackColor = true;
+			this.btDeposit.Click += new System.EventHandler(this.btDeposit_Click);
 			// 
 			// btTransfer
 			// 
@@ -105,6 +107,7 @@
 			this.btTransfer.TabIndex = 7;
 			this.btTransfer.Text = "Transfer";
 			this.btTransfer.UseVisualStyleBackColor = true;
+			this.btTransfer.Click += new System.EventHandler(this.btTransfer_Click);
 			// 
 			// Process
 			// 
@@ -121,8 +124,11 @@
 			this.Controls.Add(this.labelUserName);
 			this.MaximizeBox = false;
 			this.Name = "Process";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Management";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Process_FormClosing);
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Process_FormClosed);
+			this.Load += new System.EventHandler(this.Process_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Jint;
 
 namespace BankApp
 {
@@ -52,11 +54,32 @@ namespace BankApp
 				//	Generate IBAN ID
 				//	http://randomiban.com/static/mapp4.js
 				//	Method: buildIbans
-
-
+				string	url1	= "https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js";
+				string	url2	= "http://randomiban.com/static/mapp4.js";
+				string	stIBAN	= string.Empty;
+				try{
+					using (System.Net.WebClient wc1 = new WebClient())
+					{
+						string stData1 = wc1.DownloadString(url1);
+						using (WebClient wc2 = new WebClient())
+						{
+							string stData2 = wc2.DownloadString(url2);
+							Engine engine = new Engine();
+							engine.Execute(stData1);
+							engine.Execute(stData2);
+							stIBAN	= engine.GetValue("buildIbans").Invoke("Netherlands").ToString();
+						}
+					}
+				}catch(Exception){
+					break;
+				}
+				if(String.IsNullOrEmpty(stIBAN)){
+					MessageBox.Show("Can not create IBAN Id!");
+					break;
+				}
 				//	Save user data to database
 				if (!String.IsNullOrEmpty(
-					myQuery.CreateUser(stUid, "123456", stPass1, stFirst, stLast)
+					myQuery.CreateUser(stUid, stIBAN, stPass1, stFirst, stLast)
 				)){
 					MessageBox.Show("Can not register new user!");
 					break;
@@ -65,8 +88,6 @@ namespace BankApp
 				MessageBox.Show("Register successfully");
 				bClose	= true;
 			} while(false);
-
-
 		}
 
 		private void btCancel_Click(object sender, EventArgs e)
