@@ -28,3 +28,4 @@ D:\CAP\CodeTest\code-test\BankApp\obj\Debug\BankApp.exe
 D:\CAP\CodeTest\code-test\BankApp\obj\Debug\BankApp.pdb
 D:\CAP\CodeTest\code-test\BankApp\bin\Debug\Jint.dll
 D:\CAP\CodeTest\code-test\BankApp\obj\Debug\BankApp.csprojAssemblyReference.cache
+C:\project\git\code-test\BankApp\bin\Debug\Jint.dll

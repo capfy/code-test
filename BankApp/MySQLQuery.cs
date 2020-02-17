@@ -60,6 +60,20 @@ namespace BankApp
 			return stError;
 		}
 
+		public DataTable CheckUser(string stUid){
+			DataTable	dtRes	= new DataTable();
+			try{
+				string stCmd = "SELECT * FROM user WHERE UID = @UID";
+				myComm = new MySqlCommand(stCmd, myConn);
+				myComm.Parameters.AddWithValue("@UID", stUid);
+				myAdapter = new MySqlDataAdapter(myComm);
+				myAdapter.Fill(dtRes);
+			}catch(Exception){
+
+			}
+			return dtRes;
+		}
+
 		public DataTable Login(string stUid, string stPass){
 			DataTable	dtRes	= new DataTable();
 			try{
@@ -106,10 +120,61 @@ namespace BankApp
 				myComm.Parameters.AddWithValue("@DEPOSIT", dcDeposit);
 				myComm.Parameters.AddWithValue("@CURRENT", dcCurrent);
 				myComm.ExecuteNonQuery();
+				//	Complete
 				myTrans.Commit();
 				bResult	= true;
-			} catch (Exception ex){
+			} catch (Exception){
 				if(myTrans != null) myTrans.Rollback();
+			}
+			return bResult;
+		}
+
+		/// <summary>
+		/// Transfer Money
+		/// </summary>
+		/// <param name="stIBSend">IBAN of Sender</param>
+		/// <param name="stIBRecv">IBAN of Receiver</param>
+		/// <param name="dcCurSender">Current money of Sender</param>
+		/// <param name="dcCurRecv">Current money of Receiver</param>
+		/// <param name="dcAmount">Money to transfer</param>
+		/// <returns>true or false</returns>
+		public bool Transfer(string stIBSend, string stIBRecv, decimal dcCurSender, decimal dcCurRecv, decimal dcAmount){
+			bool	bResult	= false;
+			MySqlTransaction myTrans = null;
+			try{
+				myTrans	= myConn.BeginTransaction();
+				//	Update Sender
+				string	stCmd	= "UPDATE operation SET CANCEL_FLAG = 'T' WHERE IBAN = @IBAN";
+				myComm = new MySqlCommand(stCmd, myConn);
+				myComm.Parameters.AddWithValue("@IBAN", stIBSend);
+				myComm.ExecuteNonQuery();
+				myComm.Dispose();
+				stCmd = "INSERT INTO operation(IBAN, DEPOSIT, CURRENT, CANCEL_FLAG, ACT_TIME) VALUES(@IBAN, @DEPOSIT, @CURRENT, 'F', NOW())";
+				myComm = new MySqlCommand(stCmd, myConn);
+				myComm.Parameters.AddWithValue("@IBAN", stIBSend);
+				myComm.Parameters.AddWithValue("@DEPOSIT", (-1 * dcAmount));
+				myComm.Parameters.AddWithValue("@CURRENT", dcCurSender);
+				myComm.ExecuteNonQuery();
+				myComm.Dispose();
+				//	Update Receiver
+				stCmd = "UPDATE operation SET CANCEL_FLAG = 'T' WHERE IBAN = @IBAN";
+				myComm = new MySqlCommand(stCmd, myConn);
+				myComm.Parameters.AddWithValue("@IBAN", stIBRecv);
+				myComm.ExecuteNonQuery();
+				myComm.Dispose();
+				stCmd = "INSERT INTO operation(IBAN, DEPOSIT, CURRENT, CANCEL_FLAG, ACT_TIME) VALUES(@IBAN, @DEPOSIT, @CURRENT, 'F', NOW())";
+				myComm = new MySqlCommand(stCmd, myConn);
+				myComm.Parameters.AddWithValue("@IBAN", stIBRecv);
+				myComm.Parameters.AddWithValue("@DEPOSIT", dcAmount);
+				myComm.Parameters.AddWithValue("@CURRENT", dcCurRecv);
+				myComm.ExecuteNonQuery();
+				myComm.Dispose();
+				//	Complete
+				myTrans.Commit();
+				bResult = true;
+			}
+			catch(Exception){
+				if (myTrans != null) myTrans.Rollback();
 			}
 			return bResult;
 		}

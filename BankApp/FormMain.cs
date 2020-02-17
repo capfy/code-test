@@ -50,6 +50,11 @@ namespace BankApp
 
 		}
 
+		public void ClearInput(){
+			tbUser.Text	= string.Empty;
+			tbPassword.Text	= string.Empty;
+		}
+
 		public void Exit(){
 			Close();
 		}
